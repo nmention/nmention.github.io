@@ -1,7 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 
  #bg {
-   background-image: url("BacgroundBg.png");
+   background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0.5)),url("BacgroundBg.png"), no-repeat fixed;
+   background-size: cover;
+   max-width: 100%;
+   min-height : 100%;
+   min-width : 100%;
+   height: auto;
+
  }
 
 /* Height for devices larger than 576px */
