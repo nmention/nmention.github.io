@@ -1,8 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
- #intro {
-   background-image: url("https://mdbootstrap.com/img/new/fluid/city/018.jpg");
-   height: 100vh;
+ #bg {
+   background-image: url("BacgroundBg.png");
  }
 
 /* Height for devices larger than 576px */

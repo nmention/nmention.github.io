@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CardComponent } from './components/card/card.component';
+import { SearchBarComponent } from './components/search-bar/search-bar.component';
 
 
 
@@ -11,6 +12,7 @@ import { CardComponent } from './components/card/card.component';
   declarations: [
     AppComponent,
     CardComponent,
+    SearchBarComponent,
 
 
   ],
