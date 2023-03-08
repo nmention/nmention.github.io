@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { CardComponent } from './components/card/card.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { ActeursComponent } from './components/acteurs/acteurs.component';
 
 
 
@@ -16,6 +17,7 @@ import { FooterComponent } from './components/footer/footer.component';
     CardComponent,
     SearchBarComponent,
     FooterComponent,
+    ActeursComponent,
 
 
   ],
