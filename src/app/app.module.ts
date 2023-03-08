@@ -9,9 +9,6 @@ import { FooterComponent } from './components/footer/footer.component';
 
 import { ActeursComponent } from './components/acteurs/acteurs.component';
 
-import { HeaderComponent } from './components/header/header.component';
-
-
 
 
 
@@ -23,11 +20,6 @@ import { HeaderComponent } from './components/header/header.component';
     FooterComponent,
 
     ActeursComponent,
-
-    HeaderComponent,
-
-
-
   ],
   imports: [
     BrowserModule,
