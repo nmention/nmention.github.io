@@ -6,11 +6,11 @@ import { AppComponent } from './app.component';
 import { CardComponent } from './components/card/card.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { FooterComponent } from './components/footer/footer.component';
-<<<<<<< HEAD
+
 import { ActeursComponent } from './components/acteurs/acteurs.component';
-=======
+
 import { HeaderComponent } from './components/header/header.component';
->>>>>>> 355077eade0cde82f8e077c41279a7fe90245a96
+
 
 
 
@@ -21,11 +21,11 @@ import { HeaderComponent } from './components/header/header.component';
     CardComponent,
     SearchBarComponent,
     FooterComponent,
-<<<<<<< HEAD
+
     ActeursComponent,
-=======
+
     HeaderComponent,
->>>>>>> 355077eade0cde82f8e077c41279a7fe90245a96
+
 
 
   ],
