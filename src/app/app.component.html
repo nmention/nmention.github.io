@@ -9,13 +9,14 @@
 
 
 
-
-
-
-
-
-
-
+<h1>
+  Welcome to {{ countryData }}!
+  <p *ngFor='let country = countryData'>
+     {{country.name}}
+     Population: {{country.population}}
+     Location: {{country.latlng}}
+  </p>
+</h1>
 
 
 
@@ -26,8 +27,9 @@
   <app-search-bar style="width: 100%;margin-top: 50px;margin-right: 150px;"></app-search-bar> 
 </div>
 
-<div style="display:flex">
-  <div class="container p-5 my-5 border" style="background-color:blue;color:grey;width: 300px;height: 450px;margin-left: 100px;">
+<div style="display:flex; margin-top: 75px;">
+  <div class="card" style="width: 18rem; background-color: #252525;color:#fff; margin-left:150px">
+    <img class="card-img-top" src="..." alt="Card image cap">
   </div>
   <div class="container p-5 my-5 border">
     <h1>Info film</h1>
