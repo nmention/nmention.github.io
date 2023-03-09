@@ -8,6 +8,7 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
 import { FooterComponent } from './components/footer/footer.component';
 
 import { ActeursComponent } from './components/acteurs/acteurs.component';
+import { MusicPlaylistComponent } from './components/music-playlist/music-playlist.component';
 
 
 
@@ -20,6 +21,7 @@ import { ActeursComponent } from './components/acteurs/acteurs.component';
     FooterComponent,
 
     ActeursComponent,
+     MusicPlaylistComponent,
   ],
   imports: [
     BrowserModule,
