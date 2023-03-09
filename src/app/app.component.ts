@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core'
 import {ApiService} from './api.service';
+import { PostService } from './services/post.service';
 
 import * as $ from "jquery";
 
@@ -10,10 +11,16 @@ import * as $ from "jquery";
 })
 export class AppComponent implements OnInit{
   title = 'Movie_track';
-  countryData=this.api.getCountries();
-  constructor(private api:ApiService) {}
-  ngOnInit(): void {
-    //$("#search").attr("placeholder", "Type here to search");
-    console.log(this.countryData);
+  posts:any;
+  constructor(private service:PostService) {}
+  ngOnInit() {
+
+      this.service.getPosts()
+
+        .subscribe(response => {
+
+          this.posts = response;
+
+        });
   }
 }
