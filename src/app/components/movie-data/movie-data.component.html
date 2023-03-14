@@ -1,5 +1,7 @@
-<table>
-    <tr *ngFor="let livre of Livres; let i = index">movie-data works!
-        <td>{{livre.original_language}}</td>
-    </tr>
-</table>
+<ul>
+    <li *ngFor="let subArray of Films">
+      <ul>
+        <li *ngFor="let item of subArray">{{item.original_title}}</li>
+      </ul>
+    </li>
+  </ul>
