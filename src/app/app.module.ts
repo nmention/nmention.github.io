@@ -8,6 +8,9 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
 import { FooterComponent } from './components/footer/footer.component';
 
 import { ActeursComponent } from './components/acteurs/acteurs.component';
+import { MovieDataComponent } from './components/movie-data/movie-data.component';
+
+import {HttpClientModule} from '@angular/common/http';
 
 
 
@@ -20,10 +23,12 @@ import { ActeursComponent } from './components/acteurs/acteurs.component';
     FooterComponent,
 
     ActeursComponent,
+     MovieDataComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
