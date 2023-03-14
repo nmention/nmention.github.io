@@ -13,5 +13,7 @@ export class ApiService {
   GetBooks(){
     console.log(this.httpClient.get(`${this.REST_API}`));
     return this.httpClient.get(`${this.REST_API}`);
+
+    
   }
 }
