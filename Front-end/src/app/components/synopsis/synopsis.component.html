@@ -8,9 +8,8 @@
       Cooper est un pilote, recyclé en agriculteur,
       qui vit avec son fils et sa fille dans la ferme familiale.
     </p>
-    <p class="h-25 text-white">
-      Lorsqu'une force qu'il ne peut expliquer lui indique les coordonnées
-      d'une division secrète de la NASA, il est alors embarqué dans une expédition pour sauver l'humanité.
+    <p class="h-25 text-white" *ngFor="let movie of MovieDetails">
+      {{movie.movie}}
     </p>
 
   </div>

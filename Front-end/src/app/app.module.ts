@@ -10,8 +10,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { ActeursComponent } from './components/acteurs/acteurs.component';
 import { SynopsisComponent } from './components/synopsis/synopsis.component';
 import { MusicPlaylistComponent } from './components/music-playlist/music-playlist.component';
-
-
+import {HttpClientModule} from "@angular/common/http";
 
 
 @NgModule({
@@ -27,7 +26,8 @@ import { MusicPlaylistComponent } from './components/music-playlist/music-playli
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

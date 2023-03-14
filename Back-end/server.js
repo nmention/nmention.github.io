@@ -10,7 +10,8 @@ port = 3080;
 app.use(cors());
 
 
-app.get("/Livres",(req,res) => {
+app.get("/Movies",(req,res) => {
+
   res.json([{
     "movie" : "Avatar",
     "actor" : "Saldana",
@@ -23,6 +24,7 @@ app.get("/Livres",(req,res) => {
     ]
 
   );
+  console.log(res);
 });
 
 
