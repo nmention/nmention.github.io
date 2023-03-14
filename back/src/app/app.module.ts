@@ -9,7 +9,7 @@ import { FooterComponent } from './components/footer/footer.component';
 
 import { ActeursComponent } from './components/acteurs/acteurs.component';
 import { MovieDataComponent } from './components/movie-data/movie-data.component';
-
+import { FormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 
 
