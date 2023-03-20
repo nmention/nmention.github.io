@@ -18,7 +18,7 @@ export class SynopsisComponent implements OnInit{
 
       console.log(res);
       this.MovieDetails = res;
-    })
+    });
   }
 
 }

@@ -10,7 +10,7 @@ import {HttpClient,HttpHeaders,HttpErrorResponse} from "@angular/common/http";
 export class ApiService {
 
 
-  REST_API : string = "localhost:3080/Movies";
+  REST_API : string = "http://127.0.0.1:3080/Movies";
 
   constructor(private HttpClient:HttpClient) { }
 

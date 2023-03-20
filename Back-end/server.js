@@ -10,6 +10,9 @@ port = 3080;
 app.use(cors());
 
 
+
+
+
 app.get("/Movies",(req,res) => {
 
   res.json([{
@@ -24,7 +27,6 @@ app.get("/Movies",(req,res) => {
     ]
 
   );
-  console.log(res);
 });
 
 
