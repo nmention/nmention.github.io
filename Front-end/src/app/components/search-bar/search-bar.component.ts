@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
+import { HttpClient } from '@angular/common/http'
 import * as $ from 'jquery';
 
 
@@ -9,9 +10,15 @@ import * as $ from 'jquery';
   styleUrls: ['./search-bar.component.css']
 })
 export class SearchBarComponent {
+  maRecherche= "";
 
+  constructor() { }
 
-
-
-
-}
+  search() {
+    console.log(this.maRecherche);
+  }
+  onInputChange() {
+    if(this.maRecherche != ""){
+      console.log(this.maRecherche);
+    }
+  }} 

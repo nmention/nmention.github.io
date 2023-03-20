@@ -6,7 +6,7 @@
 
       <div class="form" >
         <i class="fa fa-search"></i>
-        <input type="text" class="form-control" placeholder="Search anything..." list="datalistOptions">
+        <input type="text" class="form-control" placeholder="Search anything..." list="datalistOptions" [(ngModel)]="maRecherche" (keyup.enter)="search()" (input)="onInputChange()">
         <datalist id="datalistOptions">
           <option value="Avatar 2"></option>
           <option value="Interstellar"></option>
