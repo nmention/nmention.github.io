@@ -8,6 +8,11 @@
 
 # Node
 /node_modules
+
+Back-end/node_modules
+Front-end/node_modules
+Front-end/.angular
+Front-end/.idea
 npm-debug.log
 yarn-error.log
 

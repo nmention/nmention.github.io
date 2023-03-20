@@ -8,9 +8,13 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
 import { FooterComponent } from './components/footer/footer.component';
 
 import { ActeursComponent } from './components/acteurs/acteurs.component';
+
 import { SynopsisComponent } from './components/synopsis/synopsis.component';
 import { MusicPlaylistComponent } from './components/music-playlist/music-playlist.component';
 import {HttpClientModule} from "@angular/common/http";
+
+//import { SynopsisComponent } from './components/synopsis/synopsis.component';
+
 
 
 @NgModule({
@@ -22,12 +26,14 @@ import {HttpClientModule} from "@angular/common/http";
 
     ActeursComponent,
      MusicPlaylistComponent,
+
      SynopsisComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
