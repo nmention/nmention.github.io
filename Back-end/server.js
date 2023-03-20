@@ -13,6 +13,8 @@ app.use(cors());
 
 
 
+
+
 app.get("/Movies",(req,res) => {
 
   res.json([{
@@ -27,7 +29,26 @@ app.get("/Movies",(req,res) => {
     ]
 
   );
+
+
+
+
+  getRequest("Tintin");
+
+
 });
+
+
+async function getRequest(typingValue){
+  fetch("https://api.themoviedb.org/3/search/movie?api_key=627ac22760c37360d262266fadac96ed&language=fr-FR&page=1&include_adult=false&query=" + typingValue)
+      .then(data =>{
+        return data.json();
+      })
+      .then(post =>{
+        console.log(post)
+      })
+
+}
 
 
 app.listen(port, ()=>{
