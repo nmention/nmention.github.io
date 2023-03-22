@@ -9,7 +9,7 @@
 # Node
 /node_modules
 back
-
+Back-end/token.js
 Back-end/node_modules
 Front-end/node_modules
 Front-end/.angular
@@ -45,7 +45,7 @@ testem.log
 
 /Back-end/node_modules
 
-/Back-end/token.js
+
 
 # System files
 .DS_Store
