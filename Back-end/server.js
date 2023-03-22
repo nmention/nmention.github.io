@@ -97,6 +97,12 @@ app.get("/",(req,res) => {
 
 io.on('connection', (socket) => {
   console.log('a user connected');
+
+
+
+  io.on('moviesRequest',(socket) => {
+    getRequest(socket);
+  })
 });
 
 
