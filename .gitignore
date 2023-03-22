@@ -45,6 +45,8 @@ testem.log
 
 /Back-end/node_modules
 
+/Back-end/token.js
+
 # System files
 .DS_Store
 Thumbs.db
