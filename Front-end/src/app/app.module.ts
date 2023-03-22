@@ -13,6 +13,8 @@ import { SynopsisComponent } from './components/synopsis/synopsis.component';
 import { MusicPlaylistComponent } from './components/music-playlist/music-playlist.component';
 import {HttpClientModule} from "@angular/common/http";
 
+import {SocketioService} from "./services/socketio.service";
+
 //import { SynopsisComponent } from './components/synopsis/synopsis.component';
 
 
@@ -35,7 +37,7 @@ import {HttpClientModule} from "@angular/common/http";
     HttpClientModule
 
   ],
-  providers: [],
+  providers: [SocketioService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

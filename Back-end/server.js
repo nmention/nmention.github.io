@@ -2,18 +2,23 @@ const express = require('express');
 const cors = require('cors');
 const Token = require('./token');
 
+const app = require('express')();
+const http = require('http').createServer(app);
 
 
 
-let tokenTMDB = Token.getTokenTMDB();
-console.log(tokenTMDB);
+/*app.use(cors({
+  origin: ['http://localhost:4200'],
+  Access-Control-Allow-Origin:*
+
+}))*/
+const io = require('socket.io')(http, {
+  cors: {
+    origins: 'http://127.0.0.1:4200"',
 
 
-const app = express();
-
-
-port = 3080;
-
+  }
+});
 
 
 app.use(cors());
@@ -24,7 +29,47 @@ app.use(cors());
 
 
 
-app.get("/Movies",(req,res) => {
+
+
+
+
+
+const events = require('events')
+let event = new events.EventEmitter();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+let tokenTMDB = Token.getTokenTMDB();
+console.log(tokenTMDB);
+
+
+
+
+
+port = 3080;
+
+
+
+//app.use(cors());
+
+
+
+
+
+
+
+app.get("/",(req,res) => {
 
   res.json([{
     "movie" : "Avatar",
@@ -40,9 +85,14 @@ app.get("/Movies",(req,res) => {
   );
 
 
+  io.on('connection', (socket) => {
+    console.log('a user connected');
+  });
 
 
-  getRequest("Tintin");
+
+
+  //getRequest("Tintin");
 
 
 });
@@ -58,6 +108,11 @@ async function getRequest(typingValue){
       })
 
 }
+
+event.on('SearchMovies',(type)=>{
+  getRequest(type);
+});
+
 
 
 app.listen(port, ()=>{
