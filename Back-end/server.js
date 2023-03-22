@@ -1,8 +1,17 @@
 const express = require('express');
 const cors = require('cors');
+const Token = require('./token');
+
+
+
+
+let tokenTMDB = Token.getTokenTMDB();
+console.log(tokenTMDB);
 
 
 const app = express();
+
+
 port = 3080;
 
 
