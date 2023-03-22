@@ -14,7 +14,7 @@ const http = require('http').createServer(app);
 }))*/
 const io = require('socket.io')(http, {
   cors: {
-    origins: 'http://127.0.0.1:4200"',
+    origins: ['http://127.0.0.1:4200'],
 
 
   }
@@ -34,8 +34,7 @@ app.use(cors());
 
 
 
-const events = require('events')
-let event = new events.EventEmitter();
+
 
 
 
@@ -85,9 +84,7 @@ app.get("/",(req,res) => {
   );
 
 
-  io.on('connection', (socket) => {
-    console.log('a user connected');
-  });
+
 
 
 
@@ -95,6 +92,11 @@ app.get("/",(req,res) => {
   //getRequest("Tintin");
 
 
+});
+
+
+io.on('connection', (socket) => {
+  console.log('a user connected');
 });
 
 
@@ -109,12 +111,10 @@ async function getRequest(typingValue){
 
 }
 
-event.on('SearchMovies',(type)=>{
-  getRequest(type);
-});
 
 
 
-app.listen(port, ()=>{
+
+http.listen(port, ()=>{
   console.log("Server is running on port 3080");
 });

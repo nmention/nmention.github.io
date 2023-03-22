@@ -9,12 +9,19 @@ import {environment} from "../../environments/environment";
 export class SocketioService {
 
   socket:any;
+  env:any = environment;
 
 
-  constructor() { }
+
+  constructor() {
+    console.log(this.env.production);
+    console.log(this.env.SOCKET_DEST);
+
+  }
 
 
   initSocket(){
-    this.socket = io("http://127.0.0.1:3080");
+
+    this.socket = io(this.env.SOCKET_DEST);
   }
 }
