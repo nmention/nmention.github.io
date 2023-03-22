@@ -1,10 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-synopsis',
-  templateUrl: './synopsis.component.html',
-  styleUrls: ['./synopsis.component.css']
+  template: `<p>{{ synopsis }}</p>`
 })
-export class SynopsisComponent {
-
+export class synopsis {
+  @Input() synopsis ="";
 }

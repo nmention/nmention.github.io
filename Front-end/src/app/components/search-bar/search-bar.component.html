@@ -6,7 +6,14 @@
 
       <div class="form" >
         <i class="fa fa-search"></i>
-        <input type="text" class="form-control" placeholder="Search anything..." list="datalistOptions" [(ngModel)]="maRecherche" (keyup.enter)="search()" (input)="onInputChange()">
+        <div>
+          <form (ngSubmit)="onSubmit()">
+            <input [(ngModel)]="searchTerm" name="search" type="text" placeholder="Search">
+            <button type="submit">Search</button>
+          </form>
+          <app-synopsis [synopsis]="synopsis"></app-synopsis>
+        </div>
+               
         <datalist id="datalistOptions">
           <option value="Avatar 2"></option>
           <option value="Interstellar"></option>
@@ -19,5 +26,9 @@
     </div>
 
   </div>
-
+  <ul>
+    <li *ngFor="let movie of movies">
+      {{ movie.title }}
+    </li>
+  </ul>
 </div>
