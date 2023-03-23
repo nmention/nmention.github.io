@@ -101,20 +101,24 @@ io.on('connection', (socket) => {
 
   socket.on('requestMovies',(arg) => {
     console.log("request from client");
-    console.log(arg);
-    getRequest(arg);
+    getRequest(arg).then(function(value){
+      console.log(value);
+      socket.emit('sendMovies',value);
+    });
+
+
+
+
+    console.log("Fin requête")
   })
 });
 
 
 async function getRequest(typingValue){
-  fetch(tokenTMDB + typingValue)
-      .then(data =>{
-        return data.json();
-      })
-      .then(post =>{
-        console.log(post)
-      })
+  const donnee = await fetch(tokenTMDB + typingValue);
+  const json = await donnee.json();
+  //console.log(json)
+  return json;
 
 }
 

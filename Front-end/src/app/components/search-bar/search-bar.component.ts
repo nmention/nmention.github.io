@@ -13,6 +13,8 @@ export class SearchBarComponent implements AfterViewInit{
 
   value : string;
   color = 'blue';
+
+  optionss : any
   constructor(private socketIoService: SocketioService) {
     this.value = '';
   }
@@ -37,6 +39,11 @@ export class SearchBarComponent implements AfterViewInit{
   ngAfterViewInit(): void {
     console.log("Interface disponible");
     console.log(this.input.nativeElement.value);
+  }
+
+
+  setoptionss(valeur:any){
+    this.optionss = valeur;
   }
 
 

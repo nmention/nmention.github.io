@@ -8,10 +8,14 @@
         <i class="fa fa-search"></i>
         <input #search [(ngModel)]="value" (click)="color='orange'" [appSearch]="color"  type="text" class="form-control" placeholder="Search anything..." list="datalistOptions">
         <datalist id="datalistOptions">
-          <option value="Avatar 2"></option>
-          <option value="Interstellar"></option>
-          <option value="Joker"></option>
-          <option value="Babylon"></option>
+
+
+            <option *ngIf="optionss" value="{{optionss.results[0].overview}}">
+            </option>
+
+
+
+
         </datalist>
         <span class="left-pan"><i class="fa fa-microphone"></i></span>
       </div>
