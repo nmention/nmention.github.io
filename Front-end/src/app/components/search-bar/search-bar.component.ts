@@ -6,6 +6,10 @@ import { synopsis } from '../synopsis/synopsis.component';
 import * as $ from 'jquery';
 
 
+interface MovieResult {
+  results: any[];
+}
+
 @Component({
   selector: 'app-search-bar',
   templateUrl: './search-bar.component.html',
@@ -44,5 +48,27 @@ export class SearchBarComponent {
       });
     });
   }
-  
+
+  onSearch() {
+      this.http.get<MovieResult>(`https://api.themoviedb.org/3/search/movie?query=${this.searchTerm}&api_key=627ac22760c37360d262266fadac96ed`).subscribe(
+        data => {
+          this.movies = data.results;
+          const datalistOptions = document.getElementById('datalistOptions');
+          if (datalistOptions != null) {
+            datalistOptions.innerHTML = '';
+            this.movies.forEach(movie => {
+              const option = document.createElement('option');
+              option.value = movie.title;
+              for (var i=0; i<datalistOptions.children.length;i++) {
+                console.log(datalistOptions.children[i]);
+              }
+              datalistOptions.appendChild(option);
+          });
+          }
+        },
+        error => {
+          console.log(error);
+        }
+      );
+  }
 } 

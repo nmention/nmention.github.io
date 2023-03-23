@@ -8,17 +8,11 @@
         <i class="fa fa-search"></i>
         <div>
           <form (ngSubmit)="onSubmit()">
-            <input [(ngModel)]="searchTerm" name="search" type="text" placeholder="Search">
+            <input [(ngModel)]="searchTerm" name="search" type="text" placeholder="Search" (input)="onSearch()" list="datalistOptions">
             <button type="submit">Search</button>
           </form>
-          <app-synopsis [synopsis]="synopsis"></app-synopsis>
         </div>
-               
         <datalist id="datalistOptions">
-          <option value="Avatar 2"></option>
-          <option value="Interstellar"></option>
-          <option value="Joker"></option>
-          <option value="Babylon"></option>
         </datalist>
         <span class="left-pan"><i class="fa fa-microphone"></i></span>
       </div>
@@ -27,8 +21,5 @@
 
   </div>
   <ul>
-    <li *ngFor="let movie of movies">
-      {{ movie.title }}
-    </li>
   </ul>
 </div>
