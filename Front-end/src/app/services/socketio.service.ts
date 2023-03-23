@@ -21,7 +21,10 @@ export class SocketioService {
 
 
   initSocket(){
-
     this.socket = io(this.env.SOCKET_DEST);
   }
+
+
+
+
 }

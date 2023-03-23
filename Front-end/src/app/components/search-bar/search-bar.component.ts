@@ -10,9 +10,13 @@ import {SocketioService} from "../../services/socketio.service";
   styleUrls: ['./search-bar.component.css']
 })
 export class SearchBarComponent implements AfterViewInit{
-  constructor(private socketIoService: SocketioService) {
 
+  value : string;
+  color = 'blue';
+  constructor(private socketIoService: SocketioService) {
+    this.value = '';
   }
+
 
   @ViewChild('search') input:any;
 
@@ -22,6 +26,12 @@ export class SearchBarComponent implements AfterViewInit{
     this.socketIoService.socket.emit("requestMovies",()=>{
       console.log("Request de films");
     })
+  }
+
+
+  setValue(){
+    this.value = "HEYYYY";
+    console.log(this.value);
   }
 
   ngAfterViewInit(): void {

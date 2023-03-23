@@ -14,6 +14,8 @@ import { MusicPlaylistComponent } from './components/music-playlist/music-playli
 import {HttpClientModule} from "@angular/common/http";
 
 import {SocketioService} from "./services/socketio.service";
+import {FormsModule} from "@angular/forms";
+import { SearchDirective } from './components/search-bar/search.directive';
 
 //import { SynopsisComponent } from './components/synopsis/synopsis.component';
 
@@ -30,13 +32,15 @@ import {SocketioService} from "./services/socketio.service";
      MusicPlaylistComponent,
 
      SynopsisComponent,
+      SearchDirective,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        FormsModule
 
-  ],
+    ],
   providers: [SocketioService],
   bootstrap: [AppComponent]
 })

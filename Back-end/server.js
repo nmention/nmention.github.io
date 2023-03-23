@@ -97,11 +97,12 @@ app.get("/",(req,res) => {
 
 io.on('connection', (socket) => {
   console.log('a user connected');
+  console.log(socket);
 
-
-
-  io.on('moviesRequest',(socket) => {
-    getRequest(socket);
+  socket.on('requestMovies',(arg) => {
+    console.log("request from client");
+    console.log(arg);
+    getRequest(arg);
   })
 });
 
