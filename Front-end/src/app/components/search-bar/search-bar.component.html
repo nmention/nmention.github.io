@@ -1,25 +1,17 @@
-<div class="container pt-2">
-
-  <div class="row height d-flex justify-content-center align-items-center">
-
-    <div class="col-md-6">
-
-      <div class="form" >
-        <i class="fa fa-search"></i>
-        <div>
-          <form (ngSubmit)="onSubmit()">
-            <input [(ngModel)]="searchTerm" name="search" type="text" placeholder="Search" (input)="onSearch()" list="datalistOptions">
-            <button type="submit">Search</button>
-          </form>
+<div class="container">
+  <form (ngSubmit)="onSubmit()">
+    <div class="row justify-content-center">
+      <div class="col-lg-6">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Rechercher un film..." [(ngModel)]="searchTerm" name="search" type="text" (input)="onSearch()" list="datalistOptions">
+          <button class="btn btn-primary" type="submit">
+            <i class="bi bi-search"></i> Rechercher
+          </button>
         </div>
-        <datalist id="datalistOptions">
-        </datalist>
-        <span class="left-pan"><i class="fa fa-microphone"></i></span>
       </div>
-
     </div>
-
-  </div>
-  <ul>
-  </ul>
+  </form>
 </div>
+
+
+<datalist id="datalistOptions"></datalist>

@@ -36,7 +36,7 @@ export class SearchBarComponent {
   
 
   getMovieDetails(movieId: number) {
-    const url = `https://api.themoviedb.org/3/movie/${movieId}?api_key=627ac22760c37360d262266fadac96ed&append_to_response=credits`;
+    const url = `https://api.themoviedb.org/3/movie/${movieId}?api_key=627ac22760c37360d262266fadac96ed&append_to_response=credits&language=fr-FR`;
     return this.http.get<any>(url);
   }
 
@@ -45,12 +45,41 @@ export class SearchBarComponent {
       const movie = movies[0];
       this.getMovieDetails(movie.id).subscribe(movieDetails => {
         this.synopsis = movieDetails.overview;
+        const synopsis = document.getElementById('synopsis');
+        if (synopsis != null) {
+          if(this.synopsis != ""){
+            synopsis.innerHTML = this.synopsis;
+          }
+          else{
+            synopsis.innerHTML = "Pas de synopsis disponible.. :("
+          }
+        }
+        const titre = document.getElementById('titre');
+        if(titre != null){
+          let tmp = Math.round((movieDetails.runtime/60)*100).toString();
+          titre.innerHTML = movieDetails.title + ' - '+ tmp.slice(0,1) + 'h' + tmp.slice(1) + ' / ' + movieDetails.genres[0].name;
+
+        }
+        const image = document.getElementById('image') as HTMLImageElement;
+        if(image != null){
+          image.src = "https://image.tmdb.org/t/p/w500/"+movieDetails.poster_path;
+        }
+        const acteurs = document.getElementById('acteurs');
+        console.log(acteurs)
+        if(acteurs != null){
+          acteurs.innerHTML =""
+          for (let i = 0 ; i < 5 ; i++) {
+            acteurs.insertAdjacentHTML('beforeend','<div class="item">'+movieDetails.credits.cast[i].name+'</div>') ;
+            console.log(acteurs)
+          }
+        }
+        console.log(movieDetails);
       });
     });
   }
 
   onSearch() {
-      this.http.get<MovieResult>(`https://api.themoviedb.org/3/search/movie?query=${this.searchTerm}&api_key=627ac22760c37360d262266fadac96ed`).subscribe(
+      this.http.get<MovieResult>(`https://api.themoviedb.org/3/search/movie?query=${this.searchTerm}&api_key=627ac22760c37360d262266fadac96ed&language=fr-FR`).subscribe(
         data => {
           this.movies = data.results;
           const datalistOptions = document.getElementById('datalistOptions');
@@ -59,9 +88,6 @@ export class SearchBarComponent {
             this.movies.forEach(movie => {
               const option = document.createElement('option');
               option.value = movie.title;
-              for (var i=0; i<datalistOptions.children.length;i++) {
-                console.log(datalistOptions.children[i]);
-              }
               datalistOptions.appendChild(option);
           });
           }
