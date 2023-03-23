@@ -15,7 +15,7 @@ export class SearchDirective {
     if (ngModel.valueChanges != null) {
         ngModel.valueChanges.subscribe((value: any) => {
         ngModel.viewToModelUpdate('real value');
-        socketIo.socket.emit("requestMovies",searchBarComp.value);
+
       });
     }
   }
@@ -29,6 +29,7 @@ export class SearchDirective {
   @HostListener('mouseenter') onMouseEnter(){
     this.highlight(this.appSearch || 'red');
     console.log(this.searchBarComp.value)
+    this.socketIo.socket.emit("requestMovies",this.searchBarComp.value);
   }
 
   @HostListener('mouseleave') onMouseLeave(){
