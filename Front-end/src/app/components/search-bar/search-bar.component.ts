@@ -1,9 +1,15 @@
+
 import { Component, OnInit } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http'
 import { synopsis } from '../synopsis/synopsis.component';
+
+import {AfterViewInit, Component, ViewChild} from '@angular/core';
+
+
 import * as $ from 'jquery';
+import {SocketioService} from "../../services/socketio.service";
 
 
 interface MovieResult {
@@ -15,11 +21,50 @@ interface MovieResult {
   templateUrl: './search-bar.component.html',
   styleUrls: ['./search-bar.component.css']
 })
+
 export class SearchBarComponent {
   searchTerm= "";
   movies: any[] = [];
   synopsis = "";
   constructor(private http: HttpClient) { }
+
+export class SearchBarComponent implements AfterViewInit{
+
+  value : string;
+  color = 'blue';
+
+  optionss : any
+  constructor(private socketIoService: SocketioService) {
+    this.value = '';
+  }
+
+
+  @ViewChild('search') input:any;
+
+
+
+  enter(){
+    this.socketIoService.socket.emit("requestMovies",()=>{
+      console.log("Request de films");
+    })
+  }
+
+
+  setValue(){
+    this.value = "HEYYYY";
+    console.log(this.value);
+  }
+
+  ngAfterViewInit(): void {
+    console.log("Interface disponible");
+    console.log(this.input.nativeElement.value);
+  }
+
+
+  setoptionss(valeur:any){
+    this.optionss = valeur;
+  }
+
 
   searchMovies(term: string): Observable<{id: number, title: string}[]> {
     const url = `https://api.themoviedb.org/3/search/movie?api_key=627ac22760c37360d262266fadac96ed&query=${term}`;
@@ -33,7 +78,7 @@ export class SearchBarComponent {
       }))
     );
   }
-  
+
 
   getMovieDetails(movieId: number) {
     const url = `https://api.themoviedb.org/3/movie/${movieId}?api_key=627ac22760c37360d262266fadac96ed&append_to_response=credits&language=fr-FR`;
@@ -97,4 +142,4 @@ export class SearchBarComponent {
         }
       );
   }
-} 
+}

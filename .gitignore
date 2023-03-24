@@ -8,6 +8,12 @@
 
 # Node
 /node_modules
+back
+Back-end/token.js
+Back-end/node_modules
+Front-end/node_modules
+Front-end/.angular
+Front-end/.idea
 npm-debug.log
 yarn-error.log
 
@@ -36,6 +42,10 @@ yarn-error.log
 /libpeerconnection.log
 testem.log
 /typings
+
+/Back-end/node_modules
+
+
 
 # System files
 .DS_Store
