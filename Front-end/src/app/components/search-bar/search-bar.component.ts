@@ -75,13 +75,15 @@ export class SearchBarComponent {
           card!.style.display = 'block';
         }
         const acteurs = document.getElementById('acteurs');
+        const actors = document.getElementById("actors");
         console.log(acteurs)
         if(acteurs != null){
           acteurs.innerHTML =""
           for (let i = 0 ; i < 5 ; i++) {
-            acteurs.insertAdjacentHTML('beforeend','<div class="item">'+movieDetails.credits.cast[i].name+'</div>') ;
+            acteurs.insertAdjacentHTML('beforeend','<span class="item">'+movieDetails.credits.cast[i].name+'</span>') ;
             console.log(acteurs)
           }
+          actors!.style.display = "block"
         }
         console.log(movieDetails);
       });
