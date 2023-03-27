@@ -44,7 +44,7 @@ export class SearchBarComponent  {
       }))
     );
   }
-  
+
 
   getMovieDetails(movieId: number) {
     const url = `https://api.themoviedb.org/3/movie/${movieId}?api_key=627ac22760c37360d262266fadac96ed&append_to_response=credits&language=fr-FR`;
@@ -57,9 +57,11 @@ export class SearchBarComponent  {
       this.getMovieDetails(movie.id).subscribe(movieDetails => {
         this.synopsis = movieDetails.overview;
         const synopsis = document.getElementById('synopsis');
+        const synopsis_container = document.getElementById("synopsis_container")
         if (synopsis != null) {
           if(this.synopsis != ""){
             synopsis.innerHTML = this.synopsis;
+            synopsis_container!.style.display = 'block';
           }
           else{
             synopsis.innerHTML = "Pas de synopsis disponible.. :("
@@ -67,20 +69,29 @@ export class SearchBarComponent  {
         }
         const titre = document.getElementById('titre');
         if(titre != null){
-          let tmp = Math.round((movieDetails.runtime/60)*100).toString();
+          console.log(movieDetails.runtime)
+          const quotient = Math.floor(movieDetails.runtime/60);
+          const remainder = movieDetails.runtime % 60;
+
+          let tmp = quotient.toString() + remainder.toString();
+
+
           titre.innerHTML = movieDetails.title + ' - '+ tmp.slice(0,1) + 'h' + tmp.slice(1) + ' / ' + movieDetails.genres[0].name;
 
         }
         const image = document.getElementById('image') as HTMLImageElement;
+        const card = document.getElementById('card');
         if(image != null){
           image.src = "https://image.tmdb.org/t/p/w500/"+movieDetails.poster_path;
+          card!.style.display = 'block';
         }
         const acteurs = document.getElementById('acteurs');
         if(acteurs != null){
           acteurs.innerHTML =""
           for (let i = 0 ; i < 5 ; i++) {
-            acteurs.insertAdjacentHTML('beforeend','<div class="item">'+movieDetails.credits.cast[i].name+'</div>') ;
+            acteurs.insertAdjacentHTML('beforeend','<span class="item">'+movieDetails.credits.cast[i].name+'</span>') ;
           }
+          actors!.style.display = "block"
         }
       });
     });
