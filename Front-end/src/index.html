@@ -13,10 +13,13 @@
 <script>
 document.addEventListener("DOMContentLoaded", function() {
   const search = document.getElementById("search-bar");
+  const searchBarForm = document.getElementById("search-bar-form");
 
   search.addEventListener("keydown", function(event) {
     if (event.key === "Enter"  && search.value !== "") {
-      alert("Search !!!");
+      searchBarForm.className = "form-anim"
+      //searchBarForm.style.animationName = "search-bar-anim-ver";
+      //alert("Search !!!");
     }
   });
 });

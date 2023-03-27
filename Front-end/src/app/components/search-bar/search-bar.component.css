@@ -1,6 +1,6 @@
 
 
-.form{
+.form-anim{
   position: relative;
   /*background-color: red;*/
   animation-name: search-bar-anim-ver, search-bar-anim-hor;
@@ -26,12 +26,14 @@
   to{top:20px;}
 
 }*/
+
 /*
 @keyframes search-bar-anim-hor {
   0% {width: 650px;}
   100% {width: 250px;}
 }
 */
+
 .form .fa-search{
 
   position: absolute;
