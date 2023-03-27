@@ -7,10 +7,10 @@ declare var window: any;
   selector: 'app-youtube-player',
   template: '<div id="player"></div>',
 })
-export class YoutubePlayerComponent implements OnInit {
+export class YoutubePlayerComponent implements OnInit{
 
 
-  constructor{private bar: SearchBarComponent} {}
+  constructor(private bar: SearchBarComponent) {}
 
 
   ngOnInit(): void {
@@ -18,7 +18,7 @@ export class YoutubePlayerComponent implements OnInit {
         this.player = new window.YT.Player('player', {
           height: '360',
           width: '640',
-          videoId: 'olnv_oz-FnA',
+          videoId: this.bar.videoId
         });
       };
   }

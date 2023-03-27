@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http'
 import { synopsis } from '../synopsis/synopsis.component';
 import * as $ from 'jquery';
-import { google } from 'googleapis';
+//import { google } from 'googleapis';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 
@@ -86,6 +86,7 @@ export class SearchBarComponent  {
           card!.style.display = 'block';
         }
         const acteurs = document.getElementById('acteurs');
+        const actors = document.getElementById('actors')
         if(acteurs != null){
           acteurs.innerHTML =""
           for (let i = 0 ; i < 5 ; i++) {
@@ -142,5 +143,5 @@ export class SearchBarComponent  {
     });
   }
 
-  
-} 
+
+}
