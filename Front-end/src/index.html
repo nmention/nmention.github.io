@@ -8,6 +8,13 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body id="bg">
-  <app-root></app-root>
-</body>
+    <app-root></app-root>
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script>
+      function onYouTubeIframeAPIReady() {
+        window.dispatchEvent(new Event('youtubeIframeAPIReady'));
+      }
+    </script>
+  </body>
+  <script src="https://apis.google.com/js/api.js"></script>
 </html>

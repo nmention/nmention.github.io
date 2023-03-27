@@ -10,6 +10,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { ActeursComponent } from './components/acteurs/acteurs.component';
 import { synopsis } from './components/synopsis/synopsis.component';
 import { MusicPlaylistComponent } from './components/music-playlist/music-playlist.component';
+import { YoutubePlayerComponent } from './components/youtube-player/youtube-player.component';
 
 
 
@@ -24,6 +25,7 @@ import { MusicPlaylistComponent } from './components/music-playlist/music-playli
     ActeursComponent,
      MusicPlaylistComponent,
      synopsis,
+     YoutubePlayerComponent,
   ],
   imports: [
     BrowserModule,

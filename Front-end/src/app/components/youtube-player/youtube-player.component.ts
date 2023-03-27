@@ -1,0 +1,29 @@
+import { Component, OnInit } from '@angular/core';
+import {SearchBarComponent} from '../search-bar/search-bar.component'
+
+declare var window: any;
+
+@Component({
+  selector: 'app-youtube-player',
+  template: '<div id="player"></div>',
+})
+export class YoutubePlayerComponent implements OnInit {
+
+
+  constructor{private bar: SearchBarComponent} {}
+
+
+  ngOnInit(): void {
+      window.onYouTubeIframeAPIReady = () => {
+        this.player = new window.YT.Player('player', {
+          height: '360',
+          width: '640',
+          videoId: 'olnv_oz-FnA',
+        });
+      };
+  }
+  player: any;
+
+}
+
+
