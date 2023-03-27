@@ -46,9 +46,11 @@ export class SearchBarComponent {
       this.getMovieDetails(movie.id).subscribe(movieDetails => {
         this.synopsis = movieDetails.overview;
         const synopsis = document.getElementById('synopsis');
+        const synopsis_container = document.getElementById("synopsis_container")
         if (synopsis != null) {
           if(this.synopsis != ""){
             synopsis.innerHTML = this.synopsis;
+            synopsis_container!.style.display = 'block';
           }
           else{
             synopsis.innerHTML = "Pas de synopsis disponible.. :("
@@ -67,8 +69,10 @@ export class SearchBarComponent {
 
         }
         const image = document.getElementById('image') as HTMLImageElement;
+        const card = document.getElementById('card');
         if(image != null){
           image.src = "https://image.tmdb.org/t/p/w500/"+movieDetails.poster_path;
+          card!.style.display = 'block';
         }
         const acteurs = document.getElementById('acteurs');
         console.log(acteurs)
