@@ -6,6 +6,7 @@ import { synopsis } from '../synopsis/synopsis.component';
 import * as $ from 'jquery';
 import { google } from 'googleapis';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { YoutubePlayerComponent } from '../youtube-player/youtube-player.component'
 
 
 interface MovieResult {
@@ -15,7 +16,8 @@ interface MovieResult {
 @Component({
   selector: 'app-search-bar',
   templateUrl: './search-bar.component.html',
-  styleUrls: ['./search-bar.component.css']
+  styleUrls: ['./search-bar.component.css'],
+  providers: [YoutubePlayerComponent]
 })
 export class SearchBarComponent  {
   searchTerm= "";
@@ -26,7 +28,7 @@ export class SearchBarComponent  {
   videoId: string = '';
 
 
-  constructor(private http: HttpClient,private sanitizer: DomSanitizer,) { }
+  constructor(private http: HttpClient,private sanitizer: DomSanitizer,private youtube : YoutubePlayerComponent) { }
 
   public getSafeUrl(url: string): SafeResourceUrl {
     return this.sanitizer.bypassSecurityTrustResourceUrl(url);
@@ -86,11 +88,13 @@ export class SearchBarComponent  {
           card!.style.display = 'block';
         }
         const acteurs = document.getElementById('acteurs');
+        const actors = document.getElementById('acteurs');
         if(acteurs != null){
           acteurs.innerHTML =""
           for (let i = 0 ; i < 5 ; i++) {
             acteurs.insertAdjacentHTML('beforeend','<span class="item">'+movieDetails.credits.cast[i].name+'</span>') ;
           }
+
           actors!.style.display = "block"
         }
       });
@@ -134,13 +138,16 @@ export class SearchBarComponent  {
               // Step 4: Get video ID and display in console
               if (youtubeData.items && youtubeData.items.length > 0) {
                 this.videoId = youtubeData.items[0].id.videoId;
-
+                this.youtube.getVideo(this.videoId);
               }
             });
         });
       }
     });
   }
+
+
+
 
   
 } 

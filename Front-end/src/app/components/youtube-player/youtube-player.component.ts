@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Optional } from '@angular/core';
 import {SearchBarComponent} from '../search-bar/search-bar.component'
 
 declare var window: any;
@@ -7,23 +7,23 @@ declare var window: any;
   selector: 'app-youtube-player',
   template: '<div id="player"></div>',
 })
-export class YoutubePlayerComponent implements OnInit {
-
-
-  constructor{private bar: SearchBarComponent} {}
-
+export class YoutubePlayerComponent implements OnInit{
+  static player : any
+  isPlayerReady = false;
 
   ngOnInit(): void {
-      window.onYouTubeIframeAPIReady = () => {
-        this.player = new window.YT.Player('player', {
-          height: '360',
-          width: '640',
-          videoId: 'olnv_oz-FnA',
-        });
-      };
+    window['onYouTubeIframeAPIReady'] = () => {
+        YoutubePlayerComponent.player = new window['YT'].Player('player', {
+        height: '360',
+        width: '640',
+      });
+    };
   }
-  player: any;
 
+  getVideo(videoId: string): void {
+      YoutubePlayerComponent.player.loadVideoById(videoId);
+      YoutubePlayerComponent.player.pauseVideo();
+  }
 }
 
 
