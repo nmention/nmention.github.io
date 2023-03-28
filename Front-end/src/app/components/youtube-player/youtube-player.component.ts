@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Optional} from '@angular/core';
 import {SearchBarComponent} from '../search-bar/search-bar.component'
 
 declare var window: any;
@@ -10,7 +10,7 @@ declare var window: any;
 export class YoutubePlayerComponent implements OnInit{
 
 
-  constructor(private bar: SearchBarComponent) {}
+  constructor(@Optional() private bar: SearchBarComponent) {}
 
 
   ngOnInit(): void {
@@ -22,6 +22,9 @@ export class YoutubePlayerComponent implements OnInit{
         });
       };
   }
+
+
+
   player: any;
 
 }

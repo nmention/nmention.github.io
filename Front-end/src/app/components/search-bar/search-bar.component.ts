@@ -90,7 +90,7 @@ export class SearchBarComponent  {
         if(acteurs != null){
           acteurs.innerHTML =""
           for (let i = 0 ; i < 5 ; i++) {
-            acteurs.insertAdjacentHTML('beforeend','<span class="item">'+movieDetails.credits.cast[i].name+'</span>') ;
+            acteurs.insertAdjacentHTML('beforeend','<span class="item me-1 fst-italic">'+movieDetails.credits.cast[i].name+'</span>') ;
           }
           actors!.style.display = "block"
         }
@@ -135,6 +135,7 @@ export class SearchBarComponent  {
               // Step 4: Get video ID and display in console
               if (youtubeData.items && youtubeData.items.length > 0) {
                 this.videoId = youtubeData.items[0].id.videoId;
+
 
               }
             });
