@@ -12,6 +12,9 @@ import { synopsis } from './components/synopsis/synopsis.component';
 import { MusicPlaylistComponent } from './components/music-playlist/music-playlist.component';
 import { YoutubePlayerComponent } from './components/youtube-player/youtube-player.component';
 
+import {SocketioService} from "./services/socketio.service";
+
+//import { SynopsisComponent } from './components/synopsis/synopsis.component';
 
 
 
@@ -19,7 +22,6 @@ import { YoutubePlayerComponent } from './components/youtube-player/youtube-play
   declarations: [
     AppComponent,
     CardComponent,
-    SearchBarComponent,
     FooterComponent,
 
     ActeursComponent,
@@ -33,7 +35,7 @@ import { YoutubePlayerComponent } from './components/youtube-player/youtube-play
     FormsModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [SocketioService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

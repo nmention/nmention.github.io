@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http'
 import { synopsis } from '../synopsis/synopsis.component';
 import * as $ from 'jquery';
-import { google } from 'googleapis';
+//import { google } from 'googleapis';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { YoutubePlayerComponent } from '../youtube-player/youtube-player.component'
 
@@ -88,11 +88,11 @@ export class SearchBarComponent  {
           card!.style.display = 'block';
         }
         const acteurs = document.getElementById('acteurs');
-        const actors = document.getElementById('acteurs');
+        const actors = document.getElementById('actors')
         if(acteurs != null){
           acteurs.innerHTML =""
           for (let i = 0 ; i < 5 ; i++) {
-            acteurs.insertAdjacentHTML('beforeend','<span class="item">'+movieDetails.credits.cast[i].name+'</span>') ;
+            acteurs.insertAdjacentHTML('beforeend','<span class="item me-1 fst-italic">'+movieDetails.credits.cast[i].name+'</span>') ;
           }
 
           actors!.style.display = "block"
