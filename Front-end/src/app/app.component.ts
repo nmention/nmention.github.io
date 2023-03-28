@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core'
 
 import * as $ from "jquery";
-import {SocketioService} from "./services/socketio.service";
+
 
 @Component({
   selector: 'app-root',
@@ -10,13 +10,6 @@ import {SocketioService} from "./services/socketio.service";
 })
 export class AppComponent implements OnInit{
   title = 'Movie_track';
-
-
-  constructor(private socketService : SocketioService) {
-    this.socketService.initSocket();
-
-
-  }
 
 
   ngOnInit(): void {

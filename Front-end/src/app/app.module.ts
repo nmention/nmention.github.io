@@ -12,8 +12,6 @@ import { synopsis } from './components/synopsis/synopsis.component';
 import { MusicPlaylistComponent } from './components/music-playlist/music-playlist.component';
 import { YoutubePlayerComponent } from './components/youtube-player/youtube-player.component';
 
-import {SocketioService} from "./services/socketio.service";
-
 //import { SynopsisComponent } from './components/synopsis/synopsis.component';
 
 
@@ -23,7 +21,7 @@ import {SocketioService} from "./services/socketio.service";
     AppComponent,
     CardComponent,
     FooterComponent,
-
+    SearchBarComponent,
     ActeursComponent,
      MusicPlaylistComponent,
      synopsis,
@@ -35,7 +33,6 @@ import {SocketioService} from "./services/socketio.service";
     FormsModule,
     HttpClientModule,
   ],
-  providers: [SocketioService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
