@@ -7,7 +7,7 @@
 <!-- * * * * * * * to get started with your project! * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
-
+<script src="https://apis.google.com/js/api.js"></script>
 
 
 
@@ -31,35 +31,47 @@
 
 
 <div class="container mt-4">
-  <div class="row">
+  <div class="row justify-content-evenly">
 
 
-    <div class="col-md-4 p-2 m-1" style="background: linear-gradient(90deg, hsla(248, 21%, 15%, 1) 0%, hsla(250, 14%, 61%, 1) 100%);">
-      <app-card></app-card>
+    <div class="col-md-4 p-2">
+      <app-card id="card" style="display: none;"></app-card>
     </div>
-    <div class="col-md-4 p-2 align-self-start bg-black">
+
+    <div class="col-md-4 p-2">
       <div class="row mb-2">
         <div class="col">
-
-          <app-synopsis></app-synopsis>
+          <app-synopsis id="synopsis_container" style="display: none"></app-synopsis>
         </div>
       </div>
       <div class="row">
-          <div class="col">
-            <app-music-playlist></app-music-playlist>
-          </div>
+        <div class="col">
+          <app-music-playlist id="actors" style="display: none"></app-music-playlist>
+        </div>
       </div>
 
     </div>
-    <div class="col-md-4">
+  </div>
+
+  <div class="row row-cols-3">
+    <div class="col">
+      <div class="embed-responsive embed-responsive-16by9">
+        <app-youtube-player id="yt" style="display: none"></app-youtube-player>
+      </div>
     </div>
+    <div class="col" id="trailer">
+
+
+    </div>
+    <div class="col">
+
+    </div>
+
   </div>
 
 </div>
 
 <app-footer></app-footer>
-
-
 
 
 

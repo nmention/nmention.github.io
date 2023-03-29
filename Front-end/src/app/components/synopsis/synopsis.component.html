@@ -1,23 +1,10 @@
 
-
-
-  <div id ="titre" style = "color : white; font-weight: bold; text-align: center; font-size: larger;">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+  <div id ="titre" class="border border-5 border-white rounded-top text-white h3 p-2" style = "font-weight: bold; text-align: center;">
   </div>
-  <div id= "synopsis"class="p-2" style="color : white;">
-
-  <div class="p-2" style="height: 100%; border: 5px solid white; display: flex; flex-direction: column; justify-content: space-between" >
-    <p class="text-white fw-bold h6">Synopsis de Jaws : WOW SO IMPRESSIVE!!!!</p>
-    <p class="h-25 text-white">Dans un proche futur, la Terre est devenue hostile pour l'homme. Les tempêtes de sable sont fréquentes
-      et il n'y a plus que le maïs qui peut être cultivé, en raison d'un sol trop aride.
-    </p>
-    <p class="h-25 text-white">
-      Cooper est un pilote, recyclé en agriculteur,
-      qui vit avec son fils et sa fille dans la ferme familiale.
-    </p>
-    <p class="h-25 text-white" *ngFor="let movie of MovieDetails; let i = index">
-      {{movie.actor}}
-      {{movie.realisator}}
-    </p>
+  <div id= "synopsis" class="p-2" style="color : white;font-size: larger; font-family: 'Roboto', sans-serif;height: 20vw; overflow: scroll">
 
   </div>
 

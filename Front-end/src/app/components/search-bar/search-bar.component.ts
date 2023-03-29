@@ -5,11 +5,16 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http'
 import { synopsis } from '../synopsis/synopsis.component';
 
-import {AfterViewInit, Component, ViewChild} from '@angular/core';
+
 
 
 import * as $ from 'jquery';
-import {SocketioService} from "../../services/socketio.service";
+
+//import { google } from 'googleapis';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { YoutubePlayerComponent } from '../youtube-player/youtube-player.component'
+import {environment} from "../../../environments/environment";
+
 
 
 interface MovieResult {
@@ -19,55 +24,29 @@ interface MovieResult {
 @Component({
   selector: 'app-search-bar',
   templateUrl: './search-bar.component.html',
-  styleUrls: ['./search-bar.component.css']
+  styleUrls: ['./search-bar.component.css'],
+  providers: [YoutubePlayerComponent]
 })
 
-export class SearchBarComponent {
+export class SearchBarComponent  {
+
   searchTerm= "";
   movies: any[] = [];
   synopsis = "";
-  constructor(private http: HttpClient) { }
-
-export class SearchBarComponent implements AfterViewInit{
-
-  value : string;
-  color = 'blue';
-
-  optionss : any
-  constructor(private socketIoService: SocketioService) {
-    this.value = '';
-  }
+  //tmdbApiKey = '627ac22760c37360d262266fadac96ed';
+  //youtubeApiKey = 'AIzaSyDUhBCgUTVc7fI8D0Fl1ww3jUPjwuLKsZE';
+  videoId: string = '';
 
 
-  @ViewChild('search') input:any;
+  constructor(private http: HttpClient,private sanitizer: DomSanitizer,private youtube : YoutubePlayerComponent) { }
 
-
-
-  enter(){
-    this.socketIoService.socket.emit("requestMovies",()=>{
-      console.log("Request de films");
-    })
-  }
-
-
-  setValue(){
-    this.value = "HEYYYY";
-    console.log(this.value);
-  }
-
-  ngAfterViewInit(): void {
-    console.log("Interface disponible");
-    console.log(this.input.nativeElement.value);
-  }
-
-
-  setoptionss(valeur:any){
-    this.optionss = valeur;
+  public getSafeUrl(url: string): SafeResourceUrl {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
 
 
   searchMovies(term: string): Observable<{id: number, title: string}[]> {
-    const url = `https://api.themoviedb.org/3/search/movie?api_key=627ac22760c37360d262266fadac96ed&query=${term}`;
+    const url = `https://api.themoviedb.org/3/search/movie?api_key=${environment.tokenTMDB}&query=${term}`;
     return this.http.get<any>(url).pipe(
       map(response => response.results),
       map(movies => movies.map((movie: { id: any; title: any; }) => {
@@ -81,7 +60,7 @@ export class SearchBarComponent implements AfterViewInit{
 
 
   getMovieDetails(movieId: number) {
-    const url = `https://api.themoviedb.org/3/movie/${movieId}?api_key=627ac22760c37360d262266fadac96ed&append_to_response=credits&language=fr-FR`;
+    const url = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${environment.tokenTMDB}&append_to_response=credits&language=fr-FR`;
     return this.http.get<any>(url);
   }
 
@@ -91,9 +70,11 @@ export class SearchBarComponent implements AfterViewInit{
       this.getMovieDetails(movie.id).subscribe(movieDetails => {
         this.synopsis = movieDetails.overview;
         const synopsis = document.getElementById('synopsis');
+        const synopsis_container = document.getElementById("synopsis_container")
         if (synopsis != null) {
           if(this.synopsis != ""){
             synopsis.innerHTML = this.synopsis;
+            synopsis_container!.style.display = 'block';
           }
           else{
             synopsis.innerHTML = "Pas de synopsis disponible.. :("
@@ -101,30 +82,39 @@ export class SearchBarComponent implements AfterViewInit{
         }
         const titre = document.getElementById('titre');
         if(titre != null){
-          let tmp = Math.round((movieDetails.runtime/60)*100).toString();
+          console.log(movieDetails.runtime)
+          const quotient = Math.floor(movieDetails.runtime/60);
+          const remainder = movieDetails.runtime % 60;
+
+          let tmp = quotient.toString() + remainder.toString();
+
+
           titre.innerHTML = movieDetails.title + ' - '+ tmp.slice(0,1) + 'h' + tmp.slice(1) + ' / ' + movieDetails.genres[0].name;
 
         }
         const image = document.getElementById('image') as HTMLImageElement;
+        const card = document.getElementById('card');
         if(image != null){
           image.src = "https://image.tmdb.org/t/p/w500/"+movieDetails.poster_path;
+          card!.style.display = 'block';
         }
         const acteurs = document.getElementById('acteurs');
-        console.log(acteurs)
+        const actors = document.getElementById('actors')
         if(acteurs != null){
           acteurs.innerHTML =""
           for (let i = 0 ; i < 5 ; i++) {
-            acteurs.insertAdjacentHTML('beforeend','<div class="item">'+movieDetails.credits.cast[i].name+'</div>') ;
-            console.log(acteurs)
+            acteurs.insertAdjacentHTML('beforeend','<span class="item me-1 fst-italic">'+movieDetails.credits.cast[i].name+'</span>') ;
           }
+
+          actors!.style.display = "block"
         }
-        console.log(movieDetails);
       });
     });
+    this.getMovieTrailer(this.searchTerm)
   }
 
   onSearch() {
-      this.http.get<MovieResult>(`https://api.themoviedb.org/3/search/movie?query=${this.searchTerm}&api_key=627ac22760c37360d262266fadac96ed&language=fr-FR`).subscribe(
+      this.http.get<MovieResult>(`https://api.themoviedb.org/3/search/movie?query=${this.searchTerm}&api_key=${environment.tokenTMDB}&language=fr-FR`).subscribe(
         data => {
           this.movies = data.results;
           const datalistOptions = document.getElementById('datalistOptions');
@@ -142,4 +132,35 @@ export class SearchBarComponent implements AfterViewInit{
         }
       );
   }
+
+
+  getMovieTrailer(movieName: string) {
+    // Step 1: Search for movie in TMDB API
+    let searchUrl = `https://api.themoviedb.org/3/search/movie?api_key=${environment.tokenTMDB}&query=${movieName}&language=fr`;
+    this.http.get(searchUrl).subscribe((data: any) => {
+      // Step 2: Get movie details from TMDB API
+      if (data && data.results && data.results.length > 0) {
+        let movieId = data.results[0].id;
+        let detailsUrl = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${environment.tokenTMDB}&language=fr`;
+        this.http.get(detailsUrl).subscribe((movieData: any) => {
+          // Step 3: Search for movie trailer on YouTube API
+            let trailerName = `${movieData.title} bande annonce vf`;
+            let searchUrl = `https://www.googleapis.com/youtube/v3/search?key=${environment.tokenYT}&part=id&q=${trailerName}`;
+            this.http.get(searchUrl).subscribe((youtubeData: any) => {
+              // Step 4: Get video ID and display in console
+              if (youtubeData.items && youtubeData.items.length > 0) {
+                this.videoId = youtubeData.items[0].id.videoId;
+                this.youtube.getVideo(this.videoId);
+              }
+            });
+        });
+      }
+    });
+  }
+
+
+
+
+
 }
+

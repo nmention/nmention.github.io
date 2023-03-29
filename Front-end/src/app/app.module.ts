@@ -12,14 +12,12 @@ import { ActeursComponent } from './components/acteurs/acteurs.component';
 import { synopsis } from './components/synopsis/synopsis.component';
 
 
-import { SynopsisComponent } from './components/synopsis/synopsis.component';
+
 
 import { MusicPlaylistComponent } from './components/music-playlist/music-playlist.component';
-import {HttpClientModule} from "@angular/common/http";
 
-import {SocketioService} from "./services/socketio.service";
-import {FormsModule} from "@angular/forms";
-import { SearchDirective } from './components/search-bar/search.directive';
+import { YoutubePlayerComponent } from './components/youtube-player/youtube-player.component';
+
 
 //import { SynopsisComponent } from './components/synopsis/synopsis.component';
 
@@ -29,13 +27,12 @@ import { SearchDirective } from './components/search-bar/search.directive';
   declarations: [
     AppComponent,
     CardComponent,
-    SearchBarComponent,
     FooterComponent,
-
+    SearchBarComponent,
     ActeursComponent,
-     MusicPlaylistComponent,
-
-     synopsis,
+    MusicPlaylistComponent,
+    synopsis,
+     YoutubePlayerComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,21 +40,8 @@ import { SearchDirective } from './components/search-bar/search.directive';
     FormsModule,
     HttpClientModule,
   ],
-  providers: [],
 
+  bootstrap: [AppComponent],
 
-     SynopsisComponent,
-      SearchDirective,
-  ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        HttpClientModule,
-        FormsModule
-
-    ],
-  providers: [SocketioService],
-
-  bootstrap: [AppComponent]
 })
 export class AppModule { }

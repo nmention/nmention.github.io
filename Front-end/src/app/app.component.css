@@ -1,1 +1,31 @@
 
+.white-border
+{
+
+  border: 1px solid white;
+}
+
+.logo
+{
+  width: 75px;
+  height: 75px;
+  border-radius: 50px;
+}
+
+.topArea
+{
+  height: 100vh;
+}
+
+.topArea-anim
+{
+  animation-name: search-bar-anim-ver;
+  animation-duration: 2s, 1s;
+  animation-delay: 0s, 2s;
+  animation-fill-mode: forwards;
+}
+@keyframes search-bar-anim-ver {
+  0%   {height: 100vh}
+  100% {height: 15vh;}
+
+}
