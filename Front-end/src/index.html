@@ -8,13 +8,35 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body id="bg">
-    <app-root></app-root>
-    <script src="https://www.youtube.com/iframe_api"></script>
-    <script>
-      function onYouTubeIframeAPIReady() {
-        window.dispatchEvent(new Event('youtubeIframeAPIReady'));
+<app-root></app-root>
+<script src="https://www.youtube.com/iframe_api"></script>
+<script>
+  function onYouTubeIframeAPIReady() {
+    window.dispatchEvent(new Event('youtubeIframeAPIReady'));
+  }
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const search = document.getElementById("search-bar");
+    const searchBarForm = document.getElementById("search-barArea");
+    const middel = document.getElementById("middel");
+
+    search.addEventListener("keydown", function(event) {
+      if (event.key === "Enter"  && search.value !== "") {
+        searchBarForm.className = "d-lg-flex p-2 flex-row justify-content-between topArea-anim"
+        middel.className = "d-flex p-5 justify-content-evenly";
+
+        //searchBarForm.style.animationName = "search-bar-anim-ver";
+        //alert("Search !!!");
       }
-    </script>
-  </body>
-  <script src="https://apis.google.com/js/api.js"></script>
+    });
+    const formRecherche = document.getElementById("recherche");
+    formRecherche.addEventListener("submit", function(event) {
+      searchBarForm.className = "d-lg-flex p-2 flex-row justify-content-between topArea-anim"
+      middel.className = "d-flex p-5 justify-content-evenly";
+    });
+  });
+</script>
+</body>
+<script src="https://apis.google.com/js/api.js"></script>
 </html>

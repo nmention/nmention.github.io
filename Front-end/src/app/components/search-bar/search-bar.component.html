@@ -1,9 +1,9 @@
 <div class="container">
-  <form (ngSubmit)="onSubmit()">
+  <form (ngSubmit)="onSubmit()" id="recherche">
     <div class="row justify-content-center">
       <div class="col-lg-6">
         <div class="input-group">
-          <input type="text" class="form-control" placeholder="Rechercher un film..." [(ngModel)]="searchTerm" name="search" type="text" (input)="onSearch()" list="datalistOptions">
+          <input type="text" id="search-bar" class="form-control" placeholder="Rechercher un film..." [(ngModel)]="searchTerm" name="search" type="text" (input)="onSearch()" list="datalistOptions">
           <button class="btn btn-primary" type="submit">
             <i class="bi bi-search"></i> Rechercher
           </button>

@@ -1,14 +1,14 @@
-/* You can add global styles to this file, and also import other style files */
+* You can add global styles to this file, and also import other style files *
 
- #bg {
-   background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0.5)),url("BacgroundBg.png"), no-repeat fixed;
-   background-size: cover;
-   max-width: 100%;
-   min-height : 100%;
-   min-width : 100%;
-   height: auto;
-
- }
+#bg {
+  background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0.5)),url("BacgroundBg.png"), no-repeat fixed;
+  background-size: cover;
+  max-width: 100%;
+  min-height : 100%;
+  min-width : 100%;
+  height: auto;
+  /*overflow: hidden;*/
+}
 
 /* Height for devices larger than 576px */
 @media (min-width: 992px) {
@@ -20,5 +20,4 @@
 .navbar .nav-link {
   color: #fff !important;
 }
-
 
