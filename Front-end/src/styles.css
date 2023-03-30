@@ -1,4 +1,4 @@
-* You can add global styles to this file, and also import other style files *
+/* You can add global styles to this file, and also import other style files */
 
 #bg {
   background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0.5)),url("BacgroundBg.png"), no-repeat fixed;
@@ -20,4 +20,3 @@
 .navbar .nav-link {
   color: #fff !important;
 }
-
