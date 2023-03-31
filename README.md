@@ -3,7 +3,7 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.4.
 
 ## Setup
-You need to run <npm install> inside "Front-end" directory
+You need to run `npm install` inside "Front-end" directory
 
 ## Development server
 
